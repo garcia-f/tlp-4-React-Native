@@ -3,22 +3,25 @@ import { useEffect, useState } from "react"
 export const useFetch = (url) => {
   
     
-        useEffect(() => {
-            getFetch()
-        },[])
+    
+
     // estado inicial
     const [state, setState] = useState({
-        data: null,
+        data: {results:[]},   // ACA CORREGI EL ERROR
         isLoading: true, 
         hasError: false,
         error: null
     })
 
+    useEffect(() => {
+        getFetch()
+    },[])
+
     const getFetch = async() => {
         const resp = await fetch(url)
         
-        // // sleep
-        /* await new Promise( resolve => setTimeout(resolve, 2000) ) */
+        // sleep
+         await new Promise( resolve => setTimeout(resolve, 2000) ) 
 
 
         if (!resp.ok) {
